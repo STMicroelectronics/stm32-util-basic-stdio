@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "version": "0.0.1",
+    "componentid": "::Utility:STM32CubeMX2 Config:Basic stdio",
+    "type": "object",
+    "grammarVersion": "3.8.0",
+    "license": "Copyright (c) 2026 STMicroelectronics",
+    "properties": {
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "info": {
+                    "title": "General information",
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "title": "Description",
+                            "type": "string",
+                            "actions": [
+                                {
+                                    "type": "disable",
+                                    "condition": "true"
+                                }
+                            ],
+                            "default": "The basic_stdio is a generic module provided to help the integration of a system trace inside an application by redirecting printf output to interfaces such as UART or ITM"
+                        },
+                        "recommendation": {
+                            "title": "Mandatory requirements",
+                            "type": "string",
+                            "actions": [
+                                {
+                                    "type": "disable",
+                                    "condition": "true"
+                                }
+                            ],
+                            "default": "Transmission requires selecting and properly configuring one of the output peripherals—either UART or ITM with debug trace components activated, or your customized output peripheral.",
+                            "description": "To initialize the basic_stdio, the following requirements must be strictly followed. This steps are mandatory to ensure proper functionality."
+                        }
+                    }
+                },
+                "resourcesAllocation": {
+                    "title": "Resources Allocation",
+                    "type": "object",
+                    "properties": {
+                        "output_interface": {
+                            "title": "Output interface",
+                            "type": "string",
+                            "actions": [
+                                {
+                                    "type": "warning",
+                                    "condition": "$resourcesAllocation.output_interface==='UART' && !$resourcesAllocation.uart_instance?.selection",
+                                    "message": "UART instance is empty."
+                                }
+                            ],
+                            "oneOf": [
+                                {
+                                    "title": "Custom",
+                                    "const": "CUSTOM",
+                                    "description": "Custom output interface implemented by the user."
+                                },
+                                {
+                                    "title": "UART",
+                                    "const": "UART"
+                                },
+                                {
+                                    "title": "ITM",
+                                    "const": "ITM"
+                                }
+                            ],
+                            "default": "UART"
+                        },
+                        "uart_instance": {
+                            "title": "UART instance",
+                            "type": "object",
+                            "description": "The UART peripheral must be configured first in HAL UART configuration panel.",
+                            "objectType": "bind.peripheral.config",
+                            "criteria": {
+                                "peripheralType": [
+                                    "usart",
+                                    "uart",
+                                    "lpuart"
+                                ]
+                            },
+                            "actions": [
+                                {
+                                    "type": "include",
+                                    "condition": "$resourcesAllocation.output_interface==='UART'"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stm32="https://developer.st.com/schemas/stm32cube/1.0.0" schemaVersion="1.7.55" xsi:noNamespaceSchemaLocation="PACK.xsd" xsi:schemaLocation="https://developer.st.com/schemas/stm32cube/1.0.0 stm32cube.xsd" Dvendor="STMicroelectronics:13" Dname="STM32*">
+  <vendor>STMicroelectronics</vendor>
+  <name>basic_stdio</name>
+  <environments>
+    <environment name="STM32Cube">
+      <stm32:pack type="UTILITY" friendlyName="basic_stdio" shortDesc="basic_stdio utility">
+        <relocation-info parent="utilities" layer="" element=""/>
+        <compatibility>
+          <release version="2.0.0">
+            <applicable-schema schemaType="sw-configuration" schemaVersion="3.8.0"/>
+            <applicable-api-group apiType="codegen-getters">
+              <applicable-api apiType="clockAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="DmaAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="EnvVarAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="ExtiAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="hwPlatformAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="NvicAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="peripheralsResourceManagerAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="pinoutAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="SWConfigurationAPI" apiVersion="1.0.0"/>
+              <applicable-api apiType="SWProjectAPI" apiVersion="1.0.0"/>
+            </applicable-api-group>
+          </release>
+        </compatibility>
+      </stm32:pack>
+    </environment>
+  </environments>
+  <ECCN>
+    <ECCN-EU>NEC</ECCN-EU>
+    <ECCN-US>EAR99</ECCN-US>
+  </ECCN>
+  <description>Pack of Basic_STDIO utility</description>
+  <url>https://developer.st.com/st-pack-server/api/v1/pack/</url>
+  <supportContact>https://community.st.com/</supportContact>
+  <repository type="git">https://github.com/STMicroelectronics/stm32-util-basic-stdio</repository>
+  <license>LICENSE.md</license>
+  <changelogs>
+    <changelog id="Release Notes" name="Release_Notes.html"/>
+  </changelogs>
+  <releases>
+    <release version="2.0.0" date="2026-03-13">
+      Refer to Release_Notes.html for release details.
+    </release>
+  </releases>
+  <keywords>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>ST</keyword>
+    <keyword>STM32</keyword>
+    <keyword>utility</keyword>
+    <keyword>stdout</keyword>
+    <keyword>trace</keyword>
+    <keyword>serial</keyword>
+    <keyword>ITM</keyword>
+    <keyword>uart</keyword>
+  </keywords>
+  <conditions>
+    <condition id="STM32 HAL UART">
+      <description>STMicroelectronics UART HAL Driver as low level component</description>
+      <require Cclass="Device" Cgroup="STM32 HAL" Csub="UART"/>
+    </condition>
+    <condition id="Cortex-M ITM">
+      <description>ARM Cortex-M ITM as low level component</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="interface">
+      <description>selection of io interface is required to use the component</description>
+      <accept Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="UART"/>
+      <accept Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="ITM"/>
+      <accept Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="Template"/>
+    </condition>
+    <condition id="Basic stdio Config">
+      <description>STMicroelectronics Utility Basic_STDIO Config</description>
+      <require Cclass="Utility" Cgroup="Basic stdio" Csub="Core"/>
+    </condition>
+  </conditions>
+  <!-- This generator is launched if any component referencing this generator by 'id' is selected and the specified <gpdsc> file does not exist -->
+  <generators>
+    <!-- This generator is launched if any component referencing this generator by 'id' is selected and the specified <gpdsc> file does not exist -->
+    <generator id="basic_stdio_mx2codegen">
+      <description>ST Microelectronics: STM32 Cube Code Generator for utility Basic_STDIO Pack</description>
+      <exe>
+        <command host="win">.config/gen_code.bat</command>
+        <command host="linux">.config/gen_code.sh</command>
+        <command host="mac">.config/gen_code.sh</command>
+        <!-- passing the generator name-->
+        <argument>basic_stdio_mx2codegen</argument>
+        <argument>$G</argument>
+        <!-- #name of the gpdsc template contained in this PACK and aligned with GPDSC name-->
+        <argument>STMicroelectronics.basic_stdio.gpdsc.hbs</argument>
+        <!-- Flag to indicate that this Generator is dry-run capable -->
+        <argument mode="dry-run">--dry-run</argument>
+      </exe>
+      <!-- <workingDir>$P</workingDir> -->
+      <!-- path is specified either absolute or relative to PDSC or GPDSC file. If not specified it is the project directory configured by the environment  -->
+      <gpdsc name="$P/STMicroelectronics.basic_stdio.gpdsc"/>
+    </generator>
+  </generators>
+  <components>
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="Core" Cversion="1.0.0" condition="interface">
+      <description>stm32 Basic_STDIO core part</description>
+      <files>
+        <file category="source" name="basic_stdio_core.c"/>
+        <file category="doc" name="README.md"/>
+        <file category="doc" name="SW_Security_Level.md"/>
+        <file category="header" name="basic_stdio_core.h"/>
+        <file category="header" name="interface_io/basic_stdio_itf_io.h"/>
+      </files>
+    </component>
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="ITM" Cversion="1.0.0" condition="Cortex-M ITM">
+      <description>ITM-based Basic_STDIO redirection (no configuration)</description>
+      <files>
+        <file category="source" name="interface_io/basic_stdio_itfio_itm.c"/>
+      </files>
+    </component>
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="UART" Cversion="1.0.0" condition="STM32 HAL UART" isDefaultVariant="true">
+      <description>UART-based Basic_STDIO redirection (no configuration)</description>
+      <files>
+        <file category="source" name="interface_io/basic_stdio_itfio_uart.c"/>
+      </files>
+    </component>
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="Template" Cversion="1.0.0">
+      <description>No stdio redirection at all: up to you to implement the services based on the templates</description>
+      <files>
+        <file category="source" name="interface_io/basic_stdio_itfio_template.c" attr="config" version="1.0.0" select="alternate implementation"/>
+      </files>
+    </component>
+    <component generator="basic_stdio_mx2codegen" Cclass="Utility" Cgroup="STM32CubeMX2 Config" Csub="Basic stdio" Cversion="1.0.0" condition="Basic stdio Config">
+      <description> Code Generation for Basic_STDIO utility </description>
+      <environments>
+        <environment name="STM32Cube">
+          <stm32:component>
+            <utility-entry-point id="Basic_STDIO" name="Basic_stdio" category="Trace / Log Utility"/>
+          </stm32:component>
+        </environment>
+      </environments>
+      <files>
+        <file category="genAsset" name=".config/gen_code.bat"/>
+        <file category="genAsset" name=".config/gen_code.sh"/>
+        <file category="genAsset" name=".config/basic_stdio_config_parameters.json"/>
+        <file category="genAsset" name=".config/template/mx_basic_stdio_app_template.c.hbs"/>
+        <file category="genAsset" name=".config/template/mx_basic_stdio_app_template.h.hbs"/>
+        <file category="genAsset" name=".config/STMicroelectronics.basic_stdio.gpdsc.hbs"/>
+        <!-- License files -->
+        <file category="genAsset" name=".config/template/partials/LICENSE_partial.hbs"/>
+        <file category="genAsset" name=".config/template/license/mx_basic_stdio_license_template.md.hbs"/>
+      </files>
+    </component>
+  </components>
+</package>

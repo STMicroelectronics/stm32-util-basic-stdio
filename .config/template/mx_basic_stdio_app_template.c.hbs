@@ -1,0 +1,52 @@
+{{!--
+  ******************************************************************************
+  * @file           : mx_basic_stdio_app_template.c.hbs
+  * @brief          : basic_stdio utility initialization source template
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  ~--}}
+{{assign 'basic_stdioFilter' (JSONparse '{"cgroup": "STM32CubeMX2 Config", "csub": "Basic stdio"}')~}}
+{{assign 'basic_stdio_context' (@root.SWConfigurationAPI.getInstancesConfiguration @root.basic_stdioFilter)~}}
+{{assign 'basic_stdio_cxt' @root.basic_stdio_context.[0].settings.parameters~}}
+{{log "basic_stdio Config template basic_stdio_cxt:" (toJSON @root.basic_stdio_cxt)~}}
+/**
+  ******************************************************************************
+  * @file : mx_basic_stdio_app.c
+  * @brief : basic_stdio mx file
+{{> LICENSE}}
+
+/* Includes ------------------------------------------------------------------*/
+#include "mx_basic_stdio_app.h"
+
+/* Private typedef -----------------------------------------------------------*/
+/* Private defines -----------------------------------------------------------*/
+/* Private macros ------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private functions prototype------------------------------------------------*/
+
+/* Exported functions --------------------------------------------------------*/
+
+/******************************************************************************/
+/* Exported functions for mx_basic_stdio in basic_stdio utility  */
+/******************************************************************************/
+
+{{#with @root.basic_stdio_cxt~}}
+{{#with resourcesAllocation~}}
+system_status_t mx_basic_stdio_init(void)
+{
+  system_status_t return_status = SYSTEM_OK ;
+
+  /* Trace initialization */{{#if (or (eq output_interface 'CUSTOM') (eq output_interface 'ITM'))}}
+  BASIC_STDIO_Init(NULL);{{else}}
+  BASIC_STDIO_Init(BASIC_STDIO_UART_GETHANDLE());{{/if}}{{!output_interface "CUSTOM"}}{{!output_interface "ITM"}}{{/with}}{{!resourcesAllocation}}
+  return return_status;
+}{{/with}}{{!basic_stdio_cxt}}

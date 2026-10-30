@@ -21,6 +21,71 @@ margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
   <style type="text/css">@charset "UTF-8";
 
@@ -1496,11 +1561,12 @@ text-align: center;
 </head>
 <body>
 <h1 id="basic-stdio-software-pack">Basic STDIO Software Pack</h1>
-<p><img role="img" aria-label="tag" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MiIgaGVpZ2h0PSIyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJ0YWc6IHYyLjAuMCI+PHRpdGxlPnRhZzogdjIuMC4wPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSI3MiIgaGVpZ2h0PSIyMCIgcng9IjMiIGZpbGw9IiNmZmYiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNyKSI+PHJlY3Qgd2lkdGg9IjI3IiBoZWlnaHQ9IjIwIiBmaWxsPSIjNTU1Ii8+PHJlY3QgeD0iMjciIHdpZHRoPSI0NSIgaGVpZ2h0PSIyMCIgZmlsbD0iIzRjMSIvPjxyZWN0IHdpZHRoPSI3MiIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIxNDUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjE3MCI+dGFnPC90ZXh0Pjx0ZXh0IHg9IjE0NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iMTcwIj50YWc8L3RleHQ+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjQ4NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzUwIj52Mi4wLjA8L3RleHQ+PHRleHQgeD0iNDg1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzNTAiPnYyLjAuMDwvdGV4dD48L2c+PC9zdmc+" alt="tag" /> <a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-util-basic-stdio/blob/main/Release_Notes.html"><img role="img" aria-label="release note" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDIiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0icmVsZWFzZSBub3RlOiB2aWV3IGh0bWwiPjx0aXRsZT5yZWxlYXNlIG5vdGU6IHZpZXcgaHRtbDwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJyIj48cmVjdCB3aWR0aD0iMTQyIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iNzkiIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSI3OSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjIwIiBmaWxsPSJnb2xkIi8+PHJlY3Qgd2lkdGg9IjE0MiIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI0MDUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjY5MCI+cmVsZWFzZSBub3RlPC90ZXh0Pjx0ZXh0IHg9IjQwNSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNjkwIj5yZWxlYXNlIG5vdGU8L3RleHQ+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjEwOTUiIHk9IjE1MCIgZmlsbD0iI2NjYyIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjUzMCI+dmlldyBodG1sPC90ZXh0Pjx0ZXh0IHg9IjEwOTUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiMzMzMiIHRleHRMZW5ndGg9IjUzMCI+dmlldyBodG1sPC90ZXh0PjwvZz48L3N2Zz4=" alt="release note" /></a></p>
+<p><img role="img" aria-label="tag" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MiIgaGVpZ2h0PSIyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJ0YWc6IHYyLjAuMSI+PHRpdGxlPnRhZzogdjIuMC4xPC90aXRsZT48ZmlsdGVyIGlkPSJibHVyIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxNiIvPjwvZmlsdGVyPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiLz48L2xpbmVhckdyYWRpZW50PjxjbGlwUGF0aCBpZD0iciI+PHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjIwIiByeD0iMyIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iMjciIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSIyNyIgd2lkdGg9IjQ1IiBoZWlnaHQ9IjIwIiBmaWxsPSIjNGIwIi8+PHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PGcgdHJhbnNmb3JtPSJzY2FsZSguMSkiPjxnIGFyaWEtaGlkZGVuPSJ0cnVlIiBmaWxsPSIjMDEwMTAxIj48dGV4dCB4PSIxNDUiIHk9IjE1MCIgZmlsbC1vcGFjaXR5PSIuOCIgZmlsdGVyPSJ1cmwoI2JsdXIpIiB0ZXh0TGVuZ3RoPSIxNzAiPnRhZzwvdGV4dD48dGV4dCB4PSIxNDUiIHk9IjE1MCIgZmlsbC1vcGFjaXR5PSIuMyIgdGV4dExlbmd0aD0iMTcwIj50YWc8L3RleHQ+PC9nPjx0ZXh0IHg9IjE0NSIgeT0iMTQwIiB0ZXh0TGVuZ3RoPSIxNzAiPnRhZzwvdGV4dD48L2c+PGcgdHJhbnNmb3JtPSJzY2FsZSguMSkiPjxnIGFyaWEtaGlkZGVuPSJ0cnVlIiBmaWxsPSIjMDEwMTAxIj48dGV4dCB4PSI0ODUiIHk9IjE1MCIgZmlsbC1vcGFjaXR5PSIuOCIgZmlsdGVyPSJ1cmwoI2JsdXIpIiB0ZXh0TGVuZ3RoPSIzNTAiPnYyLjAuMTwvdGV4dD48dGV4dCB4PSI0ODUiIHk9IjE1MCIgZmlsbC1vcGFjaXR5PSIuMyIgdGV4dExlbmd0aD0iMzUwIj52Mi4wLjE8L3RleHQ+PC9nPjx0ZXh0IHg9IjQ4NSIgeT0iMTQwIiB0ZXh0TGVuZ3RoPSIzNTAiPnYyLjAuMTwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="tag" /> <a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-util-basic-stdio/blob/main/Release_Notes.html"><img role="img" aria-label="release note" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDIiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0icmVsZWFzZSBub3RlOiB2aWV3IGh0bWwiPjx0aXRsZT5yZWxlYXNlIG5vdGU6IHZpZXcgaHRtbDwvdGl0bGU+PGZpbHRlciBpZD0iYmx1ciI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTYiLz48L2ZpbHRlcj48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIxNDIiIGhlaWdodD0iMjAiIHJ4PSIzIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI3OSIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9Ijc5IiB3aWR0aD0iNjMiIGhlaWdodD0iMjAiIGZpbGw9ImdvbGQiLz48cmVjdCB3aWR0aD0iMTQyIiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PGcgdHJhbnNmb3JtPSJzY2FsZSguMSkiPjxnIGFyaWEtaGlkZGVuPSJ0cnVlIiBmaWxsPSIjMDEwMTAxIj48dGV4dCB4PSI0MDUiIHk9IjE1MCIgZmlsbC1vcGFjaXR5PSIuOCIgZmlsdGVyPSJ1cmwoI2JsdXIpIiB0ZXh0TGVuZ3RoPSI2OTAiPnJlbGVhc2Ugbm90ZTwvdGV4dD48dGV4dCB4PSI0MDUiIHk9IjE1MCIgZmlsbC1vcGFjaXR5PSIuMyIgdGV4dExlbmd0aD0iNjkwIj5yZWxlYXNlIG5vdGU8L3RleHQ+PC9nPjx0ZXh0IHg9IjQwNSIgeT0iMTQwIiB0ZXh0TGVuZ3RoPSI2OTAiPnJlbGVhc2Ugbm90ZTwvdGV4dD48L2c+PGcgdHJhbnNmb3JtPSJzY2FsZSguMSkiPjxnIGFyaWEtaGlkZGVuPSJ0cnVlIiBmaWxsPSIjY2NjIj48dGV4dCB4PSIxMDk1IiB5PSIxNTAiIGZpbGwtb3BhY2l0eT0iLjgiIGZpbHRlcj0idXJsKCNibHVyKSIgdGV4dExlbmd0aD0iNTMwIj52aWV3IGh0bWw8L3RleHQ+PHRleHQgeD0iMTA5NSIgeT0iMTUwIiBmaWxsLW9wYWNpdHk9Ii4zIiB0ZXh0TGVuZ3RoPSI1MzAiPnZpZXcgaHRtbDwvdGV4dD48L2c+PHRleHQgeD0iMTA5NSIgeT0iMTQwIiB0ZXh0TGVuZ3RoPSI1MzAiIGZpbGw9IiMzMzMiPnZpZXcgaHRtbDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="release note" /></a></p>
 <h2 id="overview">Overview</h2>
-<p>The Basic STDIO is a minimal stdout redirection layer for STM32 that
-provides quick printf output through UART, ITM (SWO), or a custom
-input/output interface</p>
+<p>Basic STDIO is a minimal standard input/output redirection layer for
+STM32 that provides quick data transmission and reception through UART,
+ITM (SWO), or a custom interface. The application remains responsible
+for formatting transmitted messages and parsing received data.</p>
 <h2 id="description-and-usage">Description and Usage</h2>
 <h3 id="description">Description</h3>
 <p>Basic STDIO is a lightweight trace utility with a small footprint and
@@ -1511,19 +1577,39 @@ remove, replace, or extend later.</p>
 <ul>
 <li>Single init entry point</li>
 <li>Supports UART, ITM, or a custom interface</li>
-<li>Deterministic blocking output (character-by-character)</li>
+<li>Standard C TX functions: printf, puts, and putchar</li>
+<li>Standard C RX function: getchar</li>
+<li>Blocking I/O path: TX is sent immediately and RX returns exactly one
+character per call</li>
 <li>Hides toolchain libc hook differences (_write, __write, fputc,
-etc.)</li>
+_read, __read, and fgetc)</li>
 </ul>
 <h3 id="usage">Usage</h3>
-<p>The start-up sequence can be split into two steps:</p>
+<p>The start-up sequence can be split into three steps:</p>
 <h3 id="step-1-basic-stdio-initialization">Step 1: Basic STDIO
 initialization</h3>
 <p>Initialize Basic STDIO with the selected interface handle by calling
 <code>BASIC_STDIO_Init(&amp;io_handle)</code> for UART or custom
 interfaces, or with NULL when using ITM.</p>
-<h3 id="step-2-trace-sending">Step 2: Trace sending</h3>
-<p>Send trace data using <code>printf(const char *fmt, ...)</code> over
-the configured interface.</p>
+<h3 id="step-2-data-transmission">Step 2: Data transmission</h3>
+<p>Send data using <code>printf</code>, <code>puts</code>, or
+<code>putchar</code> over the configured interface.</p>
+<h3 id="step-3-data-reception">Step 3: Data reception</h3>
+<p>Receive one character using the standard C <code>getchar()</code>
+function. The selected interface must provide the received data through
+its RX path. Each call returns exactly one character and blocks until it
+is available.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> received <span class="op">=</span> getchar<span class="op">();</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>received <span class="op">!=</span> EOF<span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;received: </span><span class="sc">%c\n</span><span class="st">&quot;</span><span class="op">,</span> received<span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><code>getchar()</code> blocks until a character arrives, so it only
+returns <code>EOF</code> when the interface cannot deliver one at all,
+typically when <code>BASIC_STDIO_Init()</code> has not been called.</p>
+<p>The application is responsible for formatting transmitted messages
+and parsing received data after receiving it with
+<code>getchar()</code>.</p>
 </body>
 </html>

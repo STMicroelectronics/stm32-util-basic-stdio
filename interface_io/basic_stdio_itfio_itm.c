@@ -22,6 +22,12 @@
 /* Private macros ------------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+
+/*
+ * Mailbox written by the debug probe to inject characters; CMSIS only declares it extern.
+ */
+volatile int32_t ITM_RxBuffer = ITM_RXBUFFER_EMPTY;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Functions Definition ------------------------------------------------------*/
 
@@ -57,7 +63,7 @@ uint32_t interface_io_Send(const uint8_t *Ptr, uint16_t Size)
   if (
     ((demcr & DCB_DEMCR_TRCENA_Msk) == 0UL)
     || ((tcr & ITM_TCR_ITMENA_Msk) == 0UL)
-    || ((ter & (1UL << 31)) == 0UL)
+    || ((ter & (1UL << 0)) == 0UL)
   )
   {
     return 0;
@@ -68,6 +74,31 @@ uint32_t interface_io_Send(const uint8_t *Ptr, uint16_t Size)
     (void)ITM_SendChar(Ptr[i]);
   }
   return Size;
+}
+
+/**
+  * @brief Receive a buffer from ITM stimulus port.
+  * @param Ptr  Data buffer pointer.
+  * @param Size Number of bytes to receive.
+  * @return Bytes received.
+  * @note Blocks until the debugger has injected Size characters into the mailbox:
+  *       returning 0 would latch an end of file condition on stdin.
+  */
+uint32_t interface_io_Receive(uint8_t *Ptr, uint16_t Size)
+{
+  uint32_t received = 0U;
+
+  while (received < Size)
+  {
+    /* ITM_ReceiveChar() returns -1 when the debugger has not injected any character. */
+    const int32_t character = ITM_ReceiveChar();
+    if (character >= 0)
+    {
+      Ptr[received] = (uint8_t)character;
+      received++;
+    }
+  }
+  return received;
 }
 
 /**

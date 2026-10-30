@@ -1,7 +1,7 @@
 /**
-  * @defgroup BASIC_STDIO_UART_INTERFACE UART Interface (polling transmit)
+  * @defgroup BASIC_STDIO_UART_INTERFACE UART Interface (polling transmit and receive)
   * @ingroup BASIC_STDIO_INTERFACE_API
-  * @brief UART variant: pObj is a pointer to a configured UART handle; blocking transmit.
+  * @brief UART variant: pObj is a pointer to a configured UART handle; blocking transmit and receive.
   * @{
   */
 /**
@@ -58,6 +58,24 @@ uint32_t interface_io_Send(const uint8_t *Ptr, uint16_t Size)
   if (itf_huart != NULL)
   {
     if (HAL_UART_Transmit(itf_huart, Ptr, Size, 0xFFFFU) == HAL_OK)
+    {
+      return Size;
+    }
+  }
+  return 0;
+}
+
+/**
+  * @brief Receive a buffer over UART (polling mode).
+  * @param Ptr  Data buffer pointer.
+  * @param Size Number of bytes to receive.
+  * @return Bytes received.
+  */
+uint32_t interface_io_Receive(uint8_t *Ptr, uint16_t Size)
+{
+  if ((itf_huart != NULL) && (Size != 0U))
+  {
+    if (HAL_UART_Receive(itf_huart, Ptr, Size, HAL_MAX_DELAY) == HAL_OK)
     {
       return Size;
     }

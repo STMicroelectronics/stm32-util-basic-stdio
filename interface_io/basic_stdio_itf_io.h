@@ -42,6 +42,8 @@ void interface_io_Init(void *pobj);
 
 uint32_t interface_io_Send(const uint8_t *Ptr, uint16_t Size);
 
+uint32_t interface_io_Receive(uint8_t *Ptr, uint16_t Size);
+
 /**
   * @}
   */

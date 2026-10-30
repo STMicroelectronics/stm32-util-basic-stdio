@@ -12,6 +12,88 @@ More documentation is available at [Basic STDIO SW Pack online documentation](ht
 
 # Update history
 
+<label for="collapse-section-2.1.0" aria-hidden="true">__2.1.0 / 27-August-2026__</label>
+<div>
+
+## Main changes
+
+- Add standard input reception through getchar
+
+## Contents
+
+- Software package
+  - Core source code and header
+  - Ready to use UART and ITM interfaces
+  - Template for custom input/output interface
+
+## Supported devices and boards
+
+- STM32C5 series.
+- STM32G5 series.
+- STM32H7P series.
+- STM32V8 series.
+
+## Known Limitations
+
+None.
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V9.60.3 + ST-LINK
+- MDK-ARM Keil uVision V5.42
+- STM32CubeIDE for Visual Studio Code (GCC13 compiler)
+- STM32CubeMX2 version V1.1.1
+
+## Backward compatibility
+
+None.
+
+## Dependencies
+
+None.
+
+</div>
+
+<label for="collapse-section-2.0.1" aria-hidden="true">__2.0.1 / 02-July-2026__</label>
+<div>
+
+## Main changes
+
+- Update the PDSC file with the CubeMX APIs used by the JSON, HBS, and JS files.
+- Fix ITM interface issue
+
+## Contents
+
+- Software package
+  - Core source code and header
+  - Ready to use UART and ITM interfaces
+  - Template for custom input/output interface
+
+## Supported devices and boards
+
+- STM32C5 series.
+
+## Known Limitations
+
+None.
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V9.60.3 + ST-LINK
+- MDK-ARM Keil uVision V5.42
+- STM32CubeIDE for Visual Studio Code (GCC13 compiler)
+- STM32CubeMX2 version 1.1.0
+
+## Backward compatibility
+
+None.
+
+## Dependencies
+
+None.
+
+</div>
+
 <label for="collapse-section-2.0.0" aria-hidden="true">__2.0.0 / 13-March-2026__</label>
 <div>
 
@@ -55,11 +137,9 @@ None.
 
 
 
-<footer class="sticky">
 For complete documentation on STM32 Microcontrollers </mark> ,
 visit: http://www.st.com/stm32
 
 This release note uses up to date web standards and, for this reason, should not
 be opened with Internet Explorer but preferably with popular browsers such as
 Google Chrome, Mozilla Firefox, Opera or Microsoft Edge.
-</footer>

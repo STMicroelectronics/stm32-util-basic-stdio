@@ -55,5 +55,20 @@ uint32_t interface_io_Send(const uint8_t *Ptr, uint16_t Size)
 }
 
 /**
+  * @brief Receive data over a custom interface.
+  * @param Ptr  Data buffer pointer.
+  * @param Size Number of bytes to receive.
+  * @return Bytes received (implement). Return 0 on failure.
+  * @note Must block until Size bytes are available: returning 0 latches an
+  *       end of file condition on stdin and getchar() would never read again.
+  */
+uint32_t interface_io_Receive(uint8_t *Ptr, uint16_t Size)
+{
+  (void)(Ptr);
+  (void)(Size);
+  return 0;
+}
+
+/**
   * @}
   */

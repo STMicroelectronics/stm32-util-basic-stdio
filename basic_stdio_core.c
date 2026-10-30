@@ -65,3 +65,25 @@ int fputc(int c, FILE *f)
   return (int)res;
 }
 #endif /* WRITE_PROTO */
+
+#if defined(READ_PROTO)
+READ_PROTO(file, ptr, len)
+{
+  (void)(file); /* prevent "unused variable" warnings */
+
+  return interface_io_Receive((uint8_t *)ptr, len);
+}
+#else
+int fgetc(FILE *f)
+{
+  uint8_t character;
+
+  (void)(f); /* prevent "unused variable" warnings */
+
+  if (interface_io_Receive(&character, 1U) != 1U)
+  {
+    return EOF;
+  }
+  return (int)character;
+}
+#endif /* READ_PROTO */

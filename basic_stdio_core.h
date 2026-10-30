@@ -29,7 +29,8 @@
 /* External variables --------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macros -----------------------------------------------------------*/
-/** @def WRITE_PROTO
+
+/**
   * @brief __If defined__, expands to the signature of the low-level hook specified by your libc
   * to write a string buffer to stdout.
   *
@@ -43,6 +44,10 @@
   * @param ptr name of the "string pointer" argument of the hook
   * @param len name of the "buffer length" argument of the hook
   * @returns code signature of the hook, if available (without trailing `";"` nor `"{"`)
+  */
+
+/** @defgroup BASIC_STDIO_RETARGETING_API BASIC_STDIO Retargeting API
+  * @{
   */
 
 #if defined(__GNUC__) && !defined(__clang__)
@@ -65,6 +70,18 @@
   */
 #define WRITE_PROTO(file, ptr, len) int _write(int file, const char *ptr, int len)
 
+/** @brief stdin redirection hook as defined by __Micro-/Nano-libc__
+  *
+  * Signature generated thanks to @ref READ_PROTO when it is processed by a GCC;
+  * don't use this definition directly, write it using that macro for portability.
+  *
+  * @param file Unused
+  * @param ptr buffer receiving the read characters
+  * @param len maximum number of chars to read
+  * @returns number of chars actually read (0 is interpreted as end of file by the libc)
+  */
+#define READ_PROTO(file, ptr, len) int _read(int file, char *ptr, int len)
+
 #elif defined(__ICCARM__) && (__VER__ >= 9020001)
 /*
  * Recent IAR (v.>=9.20.1)
@@ -82,7 +99,23 @@
   * @returns number of chars actually written
   */
 #define WRITE_PROTO(file, ptr, len) size_t __write(int file, const unsigned char *ptr, size_t len)
+
+/** @brief stdin redirection hook as defined by __EWARM v>=9.20.1__
+  *
+  * Signature generated thanks to @ref READ_PROTO when it is processed by a recent IAR;
+  * don't use this definition directly, write it using that macro for portability.
+  *
+  * @param file Unused
+  * @param ptr buffer receiving the read characters
+  * @param len maximum number of chars to read
+  * @returns number of chars actually read (0 is interpreted as end of file by the libc)
+  */
+#define READ_PROTO(file, ptr, len) size_t __read(int file, unsigned char *ptr, size_t len)
 #endif /* GNUC and not __clang__ */
+
+/**
+  *  @}
+  */
 
 /* Exported functions --------------------------------------------------------*/
 
@@ -92,8 +125,7 @@ extern "C"
 #endif
 
 
-/**
-  * @defgroup BASIC_STDIO_API BASIC_STDIO Public API
+/** @defgroup BASIC_STDIO_API BASIC_STDIO Public API
   * @{
   */
 
@@ -103,7 +135,6 @@ void BASIC_STDIO_Init(void *pobj);
   *  @}
   */
 
-
 /*
   If a WRITE_PROTO-based hook is available, it will be implemented
   to redirect stdout to the desired peripheral.
@@ -112,6 +143,16 @@ void BASIC_STDIO_Init(void *pobj);
 #ifdef WRITE_PROTO
 WRITE_PROTO(file, ptr, len);
 #endif /* WRITE_PROTO */
+
+/*
+  Same principle for stdin: a READ_PROTO-based hook is used when available,
+  else fgetc as defined in stdio.h. The supported application-level RX
+  interface is getchar(); received-data parsing remains the application's
+  responsibility.
+*/
+#ifdef READ_PROTO
+READ_PROTO(file, ptr, len);
+#endif /* READ_PROTO */
 
 /** @fn int fputc(int c, FILE *f)
   * @brief Fallback I/O redirection hook
@@ -127,6 +168,18 @@ WRITE_PROTO(file, ptr, len);
   * @returns c (on success)
   * @returns EOF (on failure)
   */
+
+/** @fn int fgetc(FILE *f)
+  * @brief Fallback stdin redirection hook
+  *
+  * Definition taken from <stdio.h>; only compiled when no @ref READ_PROTO hook exists,
+  * because IAR DLib does not expose FILE when _DLIB_FILE_DESCRIPTOR is 0.
+  *
+  * @param f Unused
+  * @returns the character read (on success)
+  * @returns EOF (on failure)
+  */
+
 #ifdef __cplusplus
 }
 #endif

@@ -7,6 +7,18 @@
       <stm32:pack type="UTILITY" friendlyName="basic_stdio" shortDesc="basic_stdio utility">
         <relocation-info parent="utilities" layer="" element=""/>
         <compatibility>
+          <release version="2.1.0">
+            <applicable-schema schemaType="sw-configuration" schemaVersion="3.8.0"/>
+            <applicable-api-group apiType="codegen-getters">
+              <applicable-api apiType="SWConfigurationAPI" apiVersion="1.0.0"/>
+            </applicable-api-group>
+          </release>
+          <release version="2.0.1">
+            <applicable-schema schemaType="sw-configuration" schemaVersion="3.8.0"/>
+            <applicable-api-group apiType="codegen-getters">
+              <applicable-api apiType="SWConfigurationAPI" apiVersion="1.0.0"/>
+            </applicable-api-group>
+          </release>
           <release version="2.0.0">
             <applicable-schema schemaType="sw-configuration" schemaVersion="3.8.0"/>
             <applicable-api-group apiType="codegen-getters">
@@ -39,6 +51,12 @@
     <changelog id="Release Notes" name="Release_Notes.html"/>
   </changelogs>
   <releases>
+    <release version="2.1.0" date="2026-08-27">
+      Refer to Release_Notes.html for release details.
+    </release>
+    <release version="2.0.1" date="2026-07-02">
+      Refer to Release_Notes.html for release details.
+    </release>
     <release version="2.0.0" date="2026-03-13">
       Refer to Release_Notes.html for release details.
     </release>
@@ -97,7 +115,7 @@
     </generator>
   </generators>
   <components>
-    <component Cclass="Utility" Cgroup="Basic stdio" Csub="Core" Cversion="1.0.0" condition="interface">
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="Core" Cversion="1.1.0" condition="interface">
       <description>stm32 Basic_STDIO core part</description>
       <files>
         <file category="source" name="basic_stdio_core.c"/>
@@ -107,19 +125,19 @@
         <file category="header" name="interface_io/basic_stdio_itf_io.h"/>
       </files>
     </component>
-    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="ITM" Cversion="1.0.0" condition="Cortex-M ITM">
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="ITM" Cversion="1.1.0" condition="Cortex-M ITM">
       <description>ITM-based Basic_STDIO redirection (no configuration)</description>
       <files>
         <file category="source" name="interface_io/basic_stdio_itfio_itm.c"/>
       </files>
     </component>
-    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="UART" Cversion="1.0.0" condition="STM32 HAL UART" isDefaultVariant="true">
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="UART" Cversion="1.1.0" condition="STM32 HAL UART" isDefaultVariant="true">
       <description>UART-based Basic_STDIO redirection (no configuration)</description>
       <files>
         <file category="source" name="interface_io/basic_stdio_itfio_uart.c"/>
       </files>
     </component>
-    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="Template" Cversion="1.0.0">
+    <component Cclass="Utility" Cgroup="Basic stdio" Csub="itf_io" Cvariant="Template" Cversion="1.1.0">
       <description>No stdio redirection at all: up to you to implement the services based on the templates</description>
       <files>
         <file category="source" name="interface_io/basic_stdio_itfio_template.c" attr="config" version="1.0.0" select="alternate implementation"/>
